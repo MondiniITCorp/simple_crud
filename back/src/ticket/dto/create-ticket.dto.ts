@@ -5,7 +5,12 @@ export class CreateTicketDto {
   @ApiProperty()
   @IsNotEmpty()
   name: string;
+
   @ApiProperty()
   @IsNotEmpty()
-  password: string;
+  color_english: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  size: string;
 }

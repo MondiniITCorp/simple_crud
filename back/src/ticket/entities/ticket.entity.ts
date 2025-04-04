@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['name'])
+@Unique(['id'])
 export class Ticket {
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -18,8 +18,7 @@ export class Ticket {
   @IsNotEmpty()
   name: string;
 
-
-  @OneToOne(() => Product, (product) => product.id)
+  @OneToOne(() => Product, (product) => product.ticket)
   product: Product;
 
   @Column()

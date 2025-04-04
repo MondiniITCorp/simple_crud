@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProductsService } from './product.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 import { ApiBody } from '@nestjs/swagger';
 import { UpdateProductDto } from './dto/update-user.dto';
 
@@ -17,17 +17,12 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.productsService.createUser(createUserDto);
+  create(@Body() createProductDto: CreateProductDto) {
+    return this.productsService.createProduct(createProductDto);
   }
 
-  @Post('swagger')
-  createSwagger(@Body() createUserDto: CreateUserDto) {
-    return this.productsService.createUserSw(createUserDto);
-  }
-
-  @Get(':name')
-  getProductById(@Body() id: string) {
+  @Get(':id')
+  getProductById(@Body() id: number) {
     return this.productsService.getProductById(id);
   }
   @Get('all')
@@ -43,8 +38,8 @@ export class ProductsController {
     return this.productsService.updateProduct(updateProductDto);
   }
 
-  @Delete(':name')
-  async deleteProduct(@Body() name: string) {
-    return this.productsService.deleteProduct(name);
+  @Delete(':id')
+  async deleteProduct(@Body() id: number) {
+    return this.productsService.deleteProduct(id);
   }
 }

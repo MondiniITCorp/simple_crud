@@ -1,90 +1,59 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
 import { UpdateProductDto } from './dto/update-user.dto';
+import { Ticket } from '../ticket/entities/ticket.entity';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
+    @InjectRepository(Ticket)
+    private ticketRepository: Repository<Ticket>,
   ) {}
 
-  async createUser(createUserDto: CreateUserDto) {
-    // if (!createUserDto.name || !createUserDto.password)
-    //   throw new Error('Missing required fields');
-    // if (await this.findOneByEmail(createUserDto.name))
-    //   throw new UnauthorizedException('Username already in use');
-    // const userDto = {
-    //   name: this.decrypt(createUserDto.name),
-    //   password: this.decrypt(createUserDto.password),
-    // };
-    // const user = new User();
-    // Object.assign(user, userDto);
-    // user.password = await this.hash(this.decrypt(createUserDto.password));
-    // return this.productRepository.save();
-  }
+  async createProduct(createProductDto: CreateProductDto) {
+    const product = new Product();
+    Object.assign(product, createProductDto);
 
-  async createUserSw(createUserDto: CreateUserDto) {
-    // const emailInUse = await this.findOneByEmail(createUserDto.name);
-    // if (emailInUse) throw new UnauthorizedException('Email already in use');
-    // const client = new User();
-    // client.name = createUserDto.name;
-    // const saltRounds = 10;
-    // const hashedPassword = await bcrypt.hash(
-    //   createUserDto.password,
-    //   saltRounds,
-    // );
-    // client.password = hashedPassword;
-    // return this.productRepository.save(client);
+    const ticket = new Ticket();
+    ticket.name = createProductDto.name;
+    ticket.size = createProductDto.size_us;
+    ticket.color_english = createProductDto.color_us;
+    product.ticket = ticket;
+
+    await this.ticketRepository.save(ticket);
+
+    const savedProduct = await this.productRepository.save(product);
+    return savedProduct;
   }
 
   async updateProduct(updateProductDto: UpdateProductDto) {
     const product = await this.productRepository.findOne({
-      where: { name: updateProductDto.name },
+      where: { id: updateProductDto.id },
     });
+    if (!product) {
+      throw new UnauthorizedException('Product not found');
+    }
     Object.assign(product, updateProductDto);
 
     return this.productRepository.save(product);
   }
 
-  findAll() {
-    return this.productRepository.find();
-  }
-
-  findOne(id: number) {
+  async getProductById(id: number) {
     return this.productRepository.findOne({ where: { id: id } });
-  }
-
-  async findOneByEmail(name: string): Promise<Product | undefined> {
-    return this.productRepository.findOne({ where: { name: name } });
-  }
-
-  remove(id: number) {
-    return this.productRepository.delete(id);
-  }
-
-  async findUserOrThrow(email: string) {
-    const user = await this.findOneByEmail(email);
-    if (!user) {
-      throw new UnauthorizedException('User not found');
-    }
-    return user;
-  }
-
-  async getProductById(name: string) {
-    return this.productRepository.findOne({ where: { name: name } });
   }
 
   async getAllProducts() {
     return this.productRepository.find();
   }
 
-  async deleteProduct(name: string) {
+  async deleteProduct(id: number) {
     const product = await this.productRepository.findOne({
-      where: { name: name },
+      where: { id: id },
     });
     if (!product) {
       throw new UnauthorizedException('Product not found');

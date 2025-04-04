@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['name'])
+@Unique(['id'])
 export class Product {
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -36,6 +36,6 @@ export class Product {
   price_us: string;
 
   @OneToOne(() => Ticket, (ticket) => ticket.product, { cascade: true })
-  @JoinColumn() // Define que a tabela User conterá a FK
+  @JoinColumn()
   ticket: Ticket;
 }
