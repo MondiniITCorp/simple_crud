@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  pgsql:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'pgsql_dev'
+    restart: always
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+    networks:
+      - diniorganize-network
+
+  adminer:
+    image: adminer
+    container_name: 'adminer_dev'
+    restart: always
+    ports:
+      - 8000:8080
+    networks:
+      - diniorganize-network
+
+networks:
+  diniorganize-network:
+    driver: bridge

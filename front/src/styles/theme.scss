@@ -1,0 +1,478 @@
+@import './global.scss';
+
+.dark #root  {
+  background-color: $dark_color_theme;
+  height: 100%;
+  width: 100%;
+  min-height: 650px;
+  // color: white;
+}
+        
+.dark .navbar__menu__img {
+  content: url("../assets/logo-branco.png");
+}
+
+.dark .menu-account__sidebar {
+  background-color: $dark_color_theme;
+  color:white;
+}
+
+.dark .menu-account__sidebar-content {
+  background-color: $dark_color_theme;
+}
+
+.dark .menu-account__profile-content {
+  color:white !important;
+  border: 1px solid white;
+}
+
+.dark .menu-account__profile-container {
+  background-color: $dark_color_theme;
+  color:white;
+  a {
+    font-weight: bold;
+    color:white !important;
+  }
+}
+
+.dark .menu-account__profile-header {
+  color:white!important;
+}
+
+.dark .menu-account__profile-button-save {
+  background-color: $dark_color_theme;
+  color: white;
+}
+
+.dark .menu-account__user-header{
+  color: white;
+}
+
+.dark .MuiSvgIcon-root {
+  color: white;
+}
+
+.dark .MuiDataGrid-columnHeaderCheckbox {
+  background-color: #1e1d2b;
+}
+
+.dark .menu-account__user-table {
+  background-color: $dark_color_theme;
+  color: white;
+  .MuiDataGrid-columnHeaderCheckbox {
+    background-color: $dark_color_theme;
+  }
+}
+
+.dark .MuiCheckbox-root{
+  color: white;
+}
+
+.dark .menu-account__user-search-inputs input[type="search"] {
+  background-color: $dark_color_theme !important;
+}
+
+.dark .menu-account__user-search-inputs input::placeholder{
+  color: white;
+}
+.dark .menu-account__security-input p {
+  color: rgb(172, 172, 172) !important;
+}
+
+.dark .menu-account__user-search-results {
+  color: rgb(172, 172, 172) !important;
+}
+
+.dark .menu-account__user-search-inputs-filter {
+  background-color: $dark_color_theme !important;
+  border: 0.5px solid white !important;
+  color: white !important;
+}
+
+.dark .menu-account__security-header {
+  color:white;
+}
+
+.dark .menu-account__security-section p {
+  color: white !important;
+}
+
+.dark .menu-account__security-input input {
+  background-color: #303456 !important;
+}
+
+.dark .menu-account__security-input input::placeholder {
+  color: white;
+}
+
+.dark .menu-account__security-button button {
+  background-color: #4c9def !important ;
+}
+
+.dark .board-body {
+  background-color: #1e1d2b;
+}
+
+.dark .board-header {
+  background-color: #061b54;
+}
+
+.dark .board-header p {
+  background-color: #1e1d2b;
+  color: white;
+  border: 3px solid #1e1d2b;
+}
+
+.dark .navbar__menu__menu a {
+  color:white!important;
+}
+
+.dark .navbar__menu__logo {
+  button {
+    background-color: $dark_color_theme;
+    border: 2px solid white;
+    color: white;
+    &:hover{
+      background-color:#1e1d2b;
+    }
+  }
+}
+  
+.dark .navbar__menu__item__button {
+  background-color: #1e1d2b;
+  &:hover {
+    background-color: #303456;
+  }
+}
+
+
+.dark .calendar-page {
+  background-color: #1e1d2b;
+  color: white;
+  .header-page{
+    background-color: #061b54;
+  }
+  .month-card {
+    p {
+      color: white;
+    }
+  }
+}
+
+.dark .recents-page {
+  background-color: #1e1d2b;
+  color: white;
+  .header-page{
+    background-color: #061b54;
+  }
+}
+
+.dark .side-menu__menu__list__item__button {
+  svg {
+    color: white;
+  }
+}
+
+.dark .side-menu__menu__list__item {
+  .add-btn {
+    color: white;
+    &:hover{
+      color: #1e1d2b;
+    }
+  }
+  input {
+    background-color: #1e1d2b !important;
+  }
+  &:hover {
+    background-color: #303456 ;
+  }
+  .active {
+    background-color: #303456 !important ;
+  }
+
+}
+
+.dark .active {
+  background-color: #303456 !important ;
+}
+
+.dark .side-menu__menu__list{
+  background: linear-gradient(to top, #1f2033, #1e1d2b);
+  
+  h3{
+    color: white;
+  }
+  li {
+    color: white;
+  }
+}
+
+
+.dark .board__body__client__table {
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  
+}
+
+.dark .board__body__client__table__header{
+  color: white !important;
+  background-color: #1e1d2b !important;  
+}
+
+.dark .menu-account__user__table {
+  background-color: $dark_color_theme !important;
+}
+
+.dark.MuiDataGrid-columnHeaderDraggableContainer {
+  background-color: #1e1d2b !important;
+}
+
+.dark .actions {
+  background-color: #1e1d2b !important;
+}
+
+.dark .side-menu__menu__list__item input {
+  background-color: #1e1d2b !important;
+}
+
+.dark .boardComp__modal__container {
+  background-color: $dark_color_theme;
+  .boardComp__modal__container__form__input {
+    background-color: #1e1d2b;
+    color: white;
+  }
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+  }
+}
+
+.dark .project__board__modal__container {
+  background-color: $dark_color_theme;
+
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+  }
+  input {
+    background-color: #1e1d2b;
+    color: white;
+  } 
+}
+
+.dark .team__board__modal__container {
+  background-color: $dark_color_theme;
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+  }
+  input {
+    background-color: #1e1d2b;
+    color: white;
+  }
+}
+
+.dark .add_element {
+  background-color: #40425E ;
+  &:hover {
+    background-color: #061b54;
+  }
+}
+
+.dark Button:hover {
+  background-color: #061b54;
+}
+
+.dark .team__board__container__item__content__text{
+  color: white;
+}
+
+.dark .team__board__container__item__content__text__list__item{
+  .line-value{
+    background-color: #2C2F3F;
+  }
+}
+
+.dark .task__board__modal__add__board {
+  background-color: $dark_color_theme;
+
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+  }
+  input {
+    background-color: #1e1d2b;
+    color: white;
+  }
+}
+
+.dark .board__body__table__projects__header {
+  background-color: #1e1d2b !important;
+  color: white !important;
+}
+
+.dark .MuiDataGrid-cell--editing {
+  background-color: #1e1d2b !important;
+  color: white !important;
+} 
+
+.dark  .menu-account__user-container p {
+  color: white;
+}
+
+.dark .menu-account__user-container .MuiInputBase-input {
+  background-color: #33374E !important;
+}
+
+.dark .board-body .MuiInputBase-input {
+  background-color: #1e1d2b !important;
+  color: white !important;
+}
+
+.dark .board-body .MuiDataGrid-cellCheckbox {
+  background-color: #1e1d2b !important;
+}
+
+.dark .board__body__content__cell__details {
+  background-color: #1e1d2b !important;
+  color: white !important;
+}
+
+.dark .MuiDataGrid-filler{
+	background-color: #1e1d2b !important;
+}
+
+.dark .board__body__content__cell__header {
+  background-color: #1e1d2b !important;
+  color: white !important;
+}
+
+.dark .multi__table__actions {
+  background-color: #1e1d2b !important;
+  color: white !important;
+}
+
+.dark .initial__page__container__item {
+  background-color: #1e1d2b !important;
+  color: white;
+  border: 1px solid #1e1d2b;
+}
+
+.dark .board__body__client__table__cell {
+  color: white;
+}
+
+.dark .board__body__nav__item__list__item {
+  color: white;
+}
+
+.dark #board-body-nav-search {
+  background-color: #303456 !important;
+
+  input {
+    background-color: #303456 !important;
+    
+  }
+
+  input::placeholder {
+    color: white;
+  }
+
+}
+
+.dark .task__board__modal__container {
+  background-color: $dark_color_theme;
+
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+
+    &:hover{
+      background-color: #061b54;
+    }
+  }
+
+  input {
+    background-color: #1e1d2b;
+    color: white;
+  }
+  select {
+    background-color: #1e1d2b;
+    color: white;
+  }
+
+}
+
+.dark .panel__board__modal__container {
+  background-color: $dark_color_theme;
+
+  label {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  button {
+    background-color: #1e1d2b;
+    color: white;
+
+    &:hover{
+      background-color: #061b54;
+    }
+  }
+
+  input {
+    background-color: #1e1d2b;
+    color: white;
+  }
+}
+
+.dark .task__board__container__item__content__text {
+  background-color: #1e1d2b;
+}
+
+.dark .task__board__container__item__content__text__list__item__container {
+  background-color: $dark_color_theme;
+  color: white;
+  border: 1px solid $dark_color_theme;
+}
+
+.dark .side-menu__toggle-btn {
+  background-color: #1e1d2b;
+  &:hover {
+    background-color: #061b54;
+  }
+}

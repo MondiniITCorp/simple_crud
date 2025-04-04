@@ -1,0 +1,109 @@
+@import '../../styles/global.scss';
+
+.create-account-pg3-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: top;
+    // width: 100%;
+    height: 100vh;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}  
+
+.create-account-pg3-container {
+    // width: 100%;
+    height: 80vh;
+    display: flex;
+    // justify-content: center;
+}
+
+.create-account-pg3-content{
+    width: 60%;
+    display: flex;
+    // margin-bottom: 12% 0 12% 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        // font-size: 2.2rem;
+        // margin-bottom: -2px;
+        
+        // .highlight {
+        //     // color: #007bff;
+        // }
+    }
+}
+
+.create-account-pg3-logo{
+    width: 100%;
+    display: flex;
+    // justify-content: left;
+    // align-items: center;
+    margin-left: 25%;
+    // margin-bottom: 0;
+    img {
+        width: 30%;
+    }
+
+}
+
+.create-account-pg3-inputs {
+    width: 100%;
+    color: #474748;
+    margin-left: 30%;
+    h1{
+        font-size: 2.0rem;
+        margin: 0;
+        margin-bottom: 7%;
+        // margin-bottom: -10px;
+    }
+    // p {
+    //     // font-size: 1rem;
+    //     // margin-bottom: -10px;
+    // }
+    
+}
+
+.create-account-pg3-inputs-selection-options{
+    display: flex;
+    // align-items: center;
+    // flex-direction: row;
+    // width: 80%;
+    gap: 10px;
+    margin-top: 25px;
+    label{
+        display: flex;
+        // width: auto;
+        // align-items: center;
+        // justify-content: center;
+        border: 1px solid #cbcbcb;
+        border-radius: 30px;
+        padding: 10px 15px;
+    }
+    input {
+        width: 15px; /* Largura do radio button */
+        height: 15px; /* Altura do radio button */
+        transform: scale(1.5); /* Escala o tamanho do radio button */
+        margin-right: 10px;
+        background: none; /* Remove o background */
+        border: 2px solid #007bff; /* Adiciona borda azul */
+        appearance: none; /* Remove o estilo padrão do radio button */
+        border-radius: 50%;
+    }
+    input[type="radio"]:checked {
+        background-color: #007bff; /* Cor de fundo quando selecionado */
+    }
+}
+
+// .illustration {
+//     display: flex;
+//     justify-content: right;
+//     width: 60%;
+//     margin: 0;
+//     img {
+//         margin: 0;
+//         max-width: 100%;
+//         height: 90vh;
+//     }
+// }
