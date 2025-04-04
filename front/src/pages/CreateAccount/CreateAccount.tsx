@@ -1,7 +1,4 @@
-import { CreateAccountComp } from '../../components/CreateAccount/CreateAccountComp';
-import { CreateAccountPg2Comp } from '../../components/CreateAccount/CreateAccountPg2Comp';
-import { CreateAccountPg3Comp } from '../../components/CreateAccount/CreateAccountPg3Comp';
-import { CreateAccountPg4Comp } from '../../components/CreateAccount/CreateAccountPg4Comp';
+import { CreateAccountComp } from '../../components/Home/Home';
 import { useState } from 'react';
 import CryptoJS from 'crypto-js';
 import axios from 'axios';
@@ -69,33 +66,7 @@ export default function CreateAccount() {
           onNext={handleNext}
         />
       )}
-      {currentPage === 2 && (
-        <CreateAccountPg2Comp
-          selectionAccountType={selectionAccountType}
-          setSelectionAccountType={setSelectionAccountType}
-          onNext={handleNext}
-        />
-      )}
-      {currentPage === 3 && (
-        <CreateAccountPg3Comp
-          selectionManagement={selectionManagement}
-          setSelectionManagement={setSelectionManagement}
-          onNext={handleNext}
-        />
-      )}
-      {currentPage === 4 && (
-        <CreateAccountPg4Comp
-          selectionPriority={selectionPriority}
-          setSelectionPriority={setSelectionPriority}
-          name={name}
-          password={password}
-          accountName={accountName}
-          selectionAccountType={selectionAccountType}
-          selectionManagement={selectionManagement}
-          isButtonEnabled={true}
-          onSubmit={handleSubmit}
-        />
-      )}
+
     </>
   );
 }

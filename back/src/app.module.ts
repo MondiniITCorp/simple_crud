@@ -6,10 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from './ormconfig';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { ClientsModule } from './clients/clients.module';
-import { BoardsModule } from './boards/boards.module';
-import { TaskModule } from './task/task.module';
-import { MenuModule } from './menu/menu.module';
+import { ProductsModule } from './products/product.module';
+import { TicketModule } from './ticket/ticket.module';
 
 @Module({
   imports: [
@@ -17,10 +15,8 @@ import { MenuModule } from './menu/menu.module';
     UsersModule,
     TypeOrmModule.forRoot(config),
     AuthModule,
-    ClientsModule,
-    BoardsModule,
-    TaskModule,
-    MenuModule,
+    ProductsModule,
+    TicketModule,
   ],
   controllers: [AppController],
   providers: [AppService],

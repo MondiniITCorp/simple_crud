@@ -1,7 +1,7 @@
 import './LoginComp.scss';
-import Logo from '../../assets/logo-login.png';
+// import Logo from '../../assets/logo-login.png';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import Icon from '../../assets/dini-icon.png';
+// import Icon from '../../assets/dini-icon.png';
 import { useState } from 'react';
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
@@ -35,12 +35,9 @@ export function LoginComp() {
   return (
     <div className="login">
       <div className="login__container">
-        <div className="login__header">
-          <img src={Logo} alt="Logo" />
-        </div>
         <div className="login__content">
           <div className="login__content__default__login">
-            <img src={Icon} />
+            <img src="" />
             <h1 className="login__title">Fazer Login em sua conta</h1>
             {error && <p className="error-message">{error}</p>}
             <label>
@@ -63,12 +60,6 @@ export function LoginComp() {
               Proximo <ArrowForwardOutlinedIcon />
             </button>
           </div>
-          {/* <div className='login__divider'>
-                        <span className="divider">Ou entre via</span> 
-                    </div>
-                    <div className='login__google'>
-                        <button>Google</button>
-                    </div> */}
           <div className="login__new_account">
             Ainda não tem conta? <a href="/register">Cadastre-se</a>
           </div>

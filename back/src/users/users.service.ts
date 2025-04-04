@@ -6,7 +6,7 @@ import { Repository } from 'typeorm';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import * as CryptoJS from 'crypto-js';
-import { UserFromJwt } from 'back/src/auth/dto/user-from-jwt.dto';
+import { UserFromJwt } from 'src/auth/dto/user-from-jwt.dto';
 
 @Injectable()
 export class UsersService {
@@ -16,26 +16,14 @@ export class UsersService {
   ) {}
 
   async createUser(createUserDto: CreateUserDto) {
-    if (
-      !createUserDto.name ||
-      !createUserDto.email ||
-      !createUserDto.accountName ||
-      !createUserDto.selectionPriority ||
-      !createUserDto.selectionManagement ||
-      !createUserDto.password
-    )
+    if (!createUserDto.name || !createUserDto.password)
       throw new Error('Missing required fields');
 
-    if (await this.findOneByEmail(createUserDto.email))
-      throw new UnauthorizedException('Email already in use');
+    if (await this.findOneByEmail(createUserDto.name))
+      throw new UnauthorizedException('Username already in use');
 
     const userDto = {
       name: this.decrypt(createUserDto.name),
-      email: this.decrypt(createUserDto.email),
-      accountName: this.decrypt(createUserDto.accountName),
-      accountType: this.decrypt(createUserDto.selectionAccountType),
-      management: this.decrypt(createUserDto.selectionManagement),
-      priority: this.decrypt(createUserDto.selectionPriority),
       password: this.decrypt(createUserDto.password),
     };
 
@@ -49,15 +37,10 @@ export class UsersService {
   }
 
   async createUserSw(createUserDto: CreateUserDto) {
-    const emailInUse = await this.findOneByEmail(createUserDto.email);
+    const emailInUse = await this.findOneByEmail(createUserDto.name);
     if (emailInUse) throw new UnauthorizedException('Email already in use');
     const client = new User();
     client.name = createUserDto.name;
-    client.email = createUserDto.email;
-    client.accountName = createUserDto.accountName;
-    client.accountType = createUserDto.selectionAccountType;
-    client.management = createUserDto.selectionManagement;
-    client.priority = createUserDto.selectionPriority;
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(
       createUserDto.password,
@@ -115,8 +98,8 @@ export class UsersService {
     return this.userRepository.findOne({ where: { id: id } });
   }
 
-  async findOneByEmail(email: string): Promise<User | undefined> {
-    return this.userRepository.findOne({ where: { email: email } });
+  async findOneByEmail(name: string): Promise<User | undefined> {
+    return this.userRepository.findOne({ where: { name: name } });
   }
 
   remove(id: number) {

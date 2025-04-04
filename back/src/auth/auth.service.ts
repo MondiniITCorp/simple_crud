@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from 'back/src/users/entities/user.entity';
-import { UsersService } from 'back/src/users/users.service';
+import { User } from 'src/users/entities/user.entity';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +48,7 @@ export class AuthService {
   async gerarToken(payload: User) {
     return {
       access_token: this.jwtService.sign(
-        { email: payload.email },
+        { email: payload.name },
         {
           secret: 'topSecret512',
           expiresIn: '20h',
