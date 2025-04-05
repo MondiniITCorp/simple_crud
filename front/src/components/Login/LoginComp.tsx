@@ -42,10 +42,10 @@ export function LoginComp() {
             {error && <p className="error-message">{error}</p>}
             <label>
               <input
-                type="email"
+                type="name"
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
-                placeholder="Email"
+                placeholder="name"
               />
             </label>
             <label>

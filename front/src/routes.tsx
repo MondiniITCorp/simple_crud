@@ -17,7 +17,7 @@ export default function AppRouter() {
 					<Register />
 				} />
 				<Route path='/' element={
-					<Home />
+					<Login />
 				} />
 				<Route path='/login' element={
 					<Login />

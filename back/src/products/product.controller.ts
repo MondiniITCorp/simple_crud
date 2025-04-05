@@ -6,6 +6,7 @@ import {
   Patch,
   ValidationPipe,
   Delete,
+  Param,
 } from '@nestjs/common';
 import { ProductsService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -21,13 +22,14 @@ export class ProductsController {
     return this.productsService.createProduct(createProductDto);
   }
 
-  @Get(':id')
-  getProductById(@Body() id: number) {
-    return this.productsService.getProductById(id);
-  }
   @Get('all')
   getAllProducts() {
     return this.productsService.getAllProducts();
+  }
+
+  @Get(':id')
+  getProductById(@Param('id') id: number) {
+    return this.productsService.getProductById(id);
   }
 
   @Patch()

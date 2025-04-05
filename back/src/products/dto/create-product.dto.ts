@@ -5,11 +5,10 @@ export class CreateProductDto {
   @ApiProperty()
   @IsNotEmpty()
   name: string;
-  
+
   @ApiProperty()
   @IsNotEmpty()
   name_us: string;
-
 
   @ApiProperty()
   @IsNotEmpty()

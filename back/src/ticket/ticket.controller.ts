@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { TicketService } from './ticket.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 
@@ -17,7 +17,7 @@ export class TicketController {
   }
 
   @Get(':name')
-  getTicketById(@Body() id: string) {
+  getTicketById(@Param('name') id: string) {
     return this.ticketService.getTicketById(id);
   }
 }

@@ -5,23 +5,27 @@ import { useNavigate } from 'react-router-dom';
 
 export default function RegisterComp() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     // const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
     const handleSubmit = async () => {
-      // request to the backend to create user
-      const req = await axios.post ('http://localhost:3000/users', {
-        email,
-        password
-      })
-      .then((response) => {
-        console.log('User created successfully:', response.data);
-        navigate('/login');
-      }
-      )
-
-    }
+        try {
+            console.log(name)
+          const response = await axios.post('http://localhost:3000/users', {
+            name,
+            password,
+          });
+          console.log('User created successfully:', response.data);
+          navigate('/login');
+        } catch (error) {
+          if ((error as any).response && (error as any).response.status === 409) {
+            alert('O nome de usuário já existe. Por favor, escolha outro.');
+          } else {
+            alert('Erro ao criar conta. Tente novamente mais tarde.');
+          }
+        }
+      };
     
     return(
         <div className="register-page">
@@ -33,18 +37,18 @@ export default function RegisterComp() {
                     <p className="register-content-text">Comece já, é grátis</p>
                     <div className="register-options">
                          <input
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                        type="email"
-                        placeholder="E-mail"
-                        className="email-input"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        type="text"
+                        placeholder="Name"
+                        className="name-input"
                         />
                         <input
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                         type="password"
                         placeholder="Senha"
-                        className="email-input"
+                        className="name-input"
                         />
                         <button
                         className="continue-button"

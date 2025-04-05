@@ -44,11 +44,20 @@ export class ProductsService {
   }
 
   async getProductById(id: number) {
-    return this.productRepository.findOne({ where: { id: id } });
+    const product = await this.productRepository.findOne({ where: { id: id } });
+    if (!product) {
+      throw new UnauthorizedException('Product not found');
+    }
+    return product;
   }
 
   async getAllProducts() {
-    return this.productRepository.find();
+    try {
+      const products = await this.productRepository.find();
+      return products;
+    } catch {
+      throw new UnauthorizedException('Failed to fetch products');
+    }
   }
 
   async deleteProduct(id: number) {
