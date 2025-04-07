@@ -11,7 +11,7 @@ export default function RegisterComp() {
 
     const handleSubmit = async () => {
         try {
-            console.log(name)
+            console.log('aqui', name)
           const response = await axios.post('http://localhost:3000/users', {
             name,
             password,
