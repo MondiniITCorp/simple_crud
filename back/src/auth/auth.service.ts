@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
+import { LoginUserDto } from './dto/login-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,10 +11,10 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(LoginUserDto) {
+  async validateUser(loginUserDto: LoginUserDto) {
     try {
-      const decryptUsername = this.usersService.decrypt(LoginUserDto.username);
-      const decryptPassword = this.usersService.decrypt(LoginUserDto.password);
+      const decryptUsername = this.usersService.decrypt(loginUserDto.username);
+      const decryptPassword = this.usersService.decrypt(loginUserDto.password);
 
       if (!decryptUsername || !decryptPassword) {
         throw new UnauthorizedException('Invalid encrypted data');

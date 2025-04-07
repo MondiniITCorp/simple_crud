@@ -53,7 +53,9 @@ export class ProductsService {
 
   async getAllProducts() {
     try {
-      const products = await this.productRepository.find();
+      const products = await this.productRepository.find({
+        relations: ['ticket'],
+      });
       return products;
     } catch {
       throw new UnauthorizedException('Failed to fetch products');

@@ -5,11 +5,9 @@ export class UpdateProductDto {
   @ApiProperty()
   @IsNotEmpty()
   id: number;
-
   @ApiProperty()
   @IsOptional()
   name: string;
-
   @ApiProperty()
   @IsOptional()
   color: string;

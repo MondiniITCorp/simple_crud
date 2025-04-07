@@ -2,21 +2,28 @@ import axios from 'axios';
 import './RegisterComp.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import CryptoJS from 'crypto-js';
 export default function RegisterComp() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     // const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-
+    const encryptData = (data: string) => {
+      const secretKey = 'bWF5a29uZWh2aWFkbzEyMwo='; // Use a secure key
+      return CryptoJS.AES.encrypt(data, secretKey).toString();
+    };
+  
     const handleSubmit = async () => {
+
+      const encryptedLogin = encryptData(name);
+      const encryptedPassword = encryptData(password);
+      
         try {
-            console.log('aqui', name)
           const response = await axios.post('http://localhost:3000/users', {
-            name,
-            password,
+            name: encryptedLogin,
+            password: encryptedPassword,
           });
-          console.log('User created successfully:', response.data);
+
           navigate('/login');
         } catch (error) {
           if ((error as any).response && (error as any).response.status === 409) {

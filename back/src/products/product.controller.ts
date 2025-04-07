@@ -22,7 +22,7 @@ export class ProductsController {
     return this.productsService.createProduct(createProductDto);
   }
 
-  @Get('all')
+  @Get('')
   getAllProducts() {
     return this.productsService.getAllProducts();
   }
@@ -41,7 +41,11 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  async deleteProduct(@Body() id: number) {
-    return this.productsService.deleteProduct(id);
+  @ApiBody({
+    description: 'Delete product by id',
+    type: Number,
+  })
+  async deleteProduct(@Param('id') id: number) {
+    return this.productsService.deleteProduct(+id);
   }
 }

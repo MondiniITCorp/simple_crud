@@ -27,25 +27,11 @@ export class TicketService {
     // return this.ticketRepository.save();
   }
 
-  async createUserSw(createTicketDto: CreateTicketDto) {
-    // const emailInUse = await this.findOneByEmail(createTicketDto.name);
-    // if (emailInUse) throw new UnauthorizedException('Email already in use');
-    // const client = new User();
-    // client.name = createTicketDto.name;
-    // const saltRounds = 10;
-    // const hashedPassword = await bcrypt.hash(
-    //   createTicketDto.password,
-    //   saltRounds,
-    // );
-    // client.password = hashedPassword;
-    // return this.ticketRepository.save(client);
-  }
-
-  async updateticket(updateticketDto: UpdateTicketDto) {
+  async updateTicket(updateTicketDto: UpdateTicketDto) {
     const ticket = await this.ticketRepository.findOne({
-      where: { name: updateticketDto.name },
+      where: { id: updateTicketDto.id },
     });
-    Object.assign(ticket, updateticketDto);
+    Object.assign(ticket, updateTicketDto);
 
     return this.ticketRepository.save(ticket);
   }
@@ -62,10 +48,6 @@ export class TicketService {
     return this.ticketRepository.findOne({ where: { name: name } });
   }
 
-  remove(id: number) {
-    return this.ticketRepository.delete(id);
-  }
-
   async findUserOrThrow(email: string) {
     const user = await this.findOneByEmail(email);
     if (!user) {
@@ -74,17 +56,17 @@ export class TicketService {
     return user;
   }
 
-  async getTicketById(name: string) {
-    return this.ticketRepository.findOne({ where: { name: name } });
+  async getTicketById(id: number) {
+    return this.ticketRepository.findOne({ where: { id: id } });
   }
 
   async getAllTicket() {
     return this.ticketRepository.find();
   }
 
-  async deleteticket(name: string) {
+  async deleteTicket(id: number) {
     const ticket = await this.ticketRepository.findOne({
-      where: { name: name },
+      where: { id: id },
     });
     if (!ticket) {
       throw new UnauthorizedException('ticket not found');
