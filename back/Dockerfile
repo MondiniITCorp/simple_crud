@@ -1,21 +1,21 @@
-########################
-# BUILD FOR PRODUCTION #
-########################
-
 FROM node:lts-alpine as builder
 
 ENV NODE_ENV build
 
 WORKDIR /app/
 
+# Instala as dependências do sistema necessárias para compilar módulos nativos
+RUN apk add --no-cache python3 make g++ 
+
 COPY package*.json ./
 
-RUN npm i
+# Instala as dependências no contêiner
+RUN npm install --build-from-source
 
 COPY . .
 
 RUN npm run build \
-	&& npm prune --production
+    && npm prune --production
 
 ########################
 #      PRODUCTION      #

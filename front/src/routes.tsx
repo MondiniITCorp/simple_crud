@@ -11,9 +11,6 @@ export default function AppRouter() {
 	return (
 		<Router>
 			<Routes>
-				{/* <Route path="/" element={
-					<Boards />
-				} /> */}
 				<Route path='/register' element={
 					<Register />
 				} />

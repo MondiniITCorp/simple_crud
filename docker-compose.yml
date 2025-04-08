@@ -9,7 +9,7 @@ services:
       - simple-crud-network
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - "80:3006"
     environment:
       - VITE_API_HOST=api
     env_file:
@@ -43,8 +43,9 @@ services:
     networks:
       - simple-crud-network
     restart: always
-    env_file:
-      - ./.prod.env
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
 
   adminer:
     image: adminer
