@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 export default function ProductsComp() {
 	const [formData, setFormData] = useState({
@@ -212,7 +213,10 @@ export default function ProductsComp() {
 
 
 	return (
+    <>
+    <Navbar />
 		<div>
+
 			<h1>Products</h1>
 			<form onSubmit={editingProduct ? handleSaveEdit : handleSubmit}>
 				{formFields.map((field) => (
@@ -315,5 +319,7 @@ export default function ProductsComp() {
 				</div>
 			)}
 		</div>
+    </>
+
 	);
 }

@@ -1,0 +1,60 @@
+services:
+  web:
+    depends_on:
+      - api
+    build: ./front
+    image: front
+    container_name: front
+    networks:
+      - simple-crud-network
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - VITE_API_HOST=api
+    env_file:
+      - ./.prod.env
+    volumes:
+      - ./dataAssets:/app/dist/data
+
+  api:
+    depends_on:
+      - pgsql
+    build: ./api
+    image: api
+    container_name: api
+    networks:
+      - simple-crud-network
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=pgsql
+    env_file:
+      - ./.prod.env
+    volumes:
+      - ./dataAssets:/app/data
+
+  pgsql:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'pgsql'
+    networks:
+      - simple-crud-network
+    restart: always
+    env_file:
+      - ./.prod.env
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    networks:
+      - simple-crud-network
+    restart: always
+    ports:
+      - 8000:8080
+
+networks:
+  simple-crud-network:
+    driver: bridge
