@@ -1,7 +1,7 @@
 services:
   web:
     depends_on:
-      - api
+      - back
     build: ./front
     image: front
     container_name: front
@@ -17,12 +17,12 @@ services:
     volumes:
       - ./dataAssets:/app/dist/data
 
-  api:
+  back:
     depends_on:
       - pgsql
-    build: ./api
-    image: api
-    container_name: api
+    build: ./back
+    image: back
+    container_name: back
     networks:
       - simple-crud-network
     restart: unless-stopped
