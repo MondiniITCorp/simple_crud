@@ -19,7 +19,7 @@ export default function RegisterComp() {
       const encryptedPassword = encryptData(password);
       
         try {
-          const response = await axios.post(`${import.meta.env.VITE_API_HOST}/api/users`, {
+          const response = await axios.post(`${import.meta.env.VITE_API_HOST}/users`, {
             name: encryptedLogin,
             password: encryptedPassword,
           });
