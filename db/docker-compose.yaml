@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
     networks:
-      - diniorganize-network
+      - simple-crud-network
 
   adminer:
     image: adminer
@@ -20,8 +20,8 @@ services:
     ports:
       - 8000:8080
     networks:
-      - diniorganize-network
+      - simple-crud-network
 
 networks:
-  diniorganize-network:
+  simple-crud-network:
     driver: bridge

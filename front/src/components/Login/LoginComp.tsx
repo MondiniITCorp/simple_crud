@@ -1,7 +1,5 @@
 import './LoginComp.scss';
-// import Logo from '../../assets/logo-login.png';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-// import Icon from '../../assets/dini-icon.png';
 import { useState } from 'react';
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
@@ -20,7 +18,7 @@ export function LoginComp() {
     const encryptedLogin = encryptData(login);
     const encryptedPassword = encryptData(password);
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post(`${import.meta.env.VITE_API_HOST}/auth/login`, {
         username: encryptedLogin,
         password: encryptedPassword,
       });
