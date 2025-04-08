@@ -18,8 +18,8 @@ async function bootstrap() {
     }),
   );
   const config = new DocumentBuilder()
-    .setTitle('Transcendence Api')
-    .setDescription('Swagger of pong game 42 transcendence!')
+    .setTitle('Simple Crud Api')
+    .setDescription('Swagger of Simple Crud')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
