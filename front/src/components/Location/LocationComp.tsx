@@ -9,7 +9,7 @@ export default function LocationComp() {
 	useEffect(() => {
 		async function fetchProducts() {
 			try {
-				const response = await axios.get(`${import.meta.env.VITE_API_HOST}/product`); // Endpoint para buscar produtos
+				const response = await axios.get(`${import.meta.env.VITE_API_HOST}/api/product`); // Endpoint para buscar produtos
 				const products = response.data;
 
 				// Agrupa os produtos por localização

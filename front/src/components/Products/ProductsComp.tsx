@@ -43,7 +43,7 @@ export default function ProductsComp() {
 	useEffect(() => {
 		async function fetchProducts() {
 			try {
-				const response = await axios.get(`${import.meta.env.VITE_API_HOST}/product`); // Endpoint para buscar produtos
+				const response = await axios.get(`${import.meta.env.VITE_API_HOST}/api/product`); // Endpoint para buscar produtos
 				setProducts(response.data); // Atualiza o estado com os produtos retornados
 			} catch (error) {
 				console.error('Erro ao buscar produtos:', error);
@@ -70,7 +70,7 @@ export default function ProductsComp() {
 
 	async function handleTicketClick(ticketId: number) {
 		try {
-			const response = await axios.get(`${import.meta.env.VITE_API_HOST}/ticket/${ticketId}`); // Endpoint para buscar o ticket
+			const response = await axios.get(`${import.meta.env.VITE_API_HOST}/api/ticket/${ticketId}`); // Endpoint para buscar o ticket
 			setSelectedTicket(response.data); // Atualiza o estado com o ticket retornado
 		} catch (error) {
 			console.error('Erro ao buscar ticket:', error);
@@ -82,7 +82,7 @@ export default function ProductsComp() {
 		e.preventDefault();
 
 		try {
-			const req = await axios.post(`${import.meta.env.VITE_API_HOST}/product`, formData);
+			const req = await axios.post(`${import.meta.env.VITE_API_HOST}/api/product`, formData);
 			alert('Product created successfully');
 
 			// Atualiza a lista de produtos após criar um novo
@@ -134,7 +134,7 @@ export default function ProductsComp() {
 		updatedFields.id = editingProduct.id;
 
 		try {
-			const response = await axios.patch(`${import.meta.env.VITE_API_HOST}/product`, updatedFields); // Endpoint para atualizar o produto
+			const response = await axios.patch(`${import.meta.env.VITE_API_HOST}/api/product`, updatedFields); // Endpoint para atualizar o produto
 			alert('Product updated successfully');
 			setProducts((prevProducts) => prevProducts.map((p) => (p.id === response.data.id ? response.data : p))); // Atualiza a lista de produtos
 			setEditingProduct(null); // Sai do modo de edição
@@ -163,7 +163,7 @@ export default function ProductsComp() {
 		try {
 			// Inclui o ID do ticket no corpo da requisição
 			const response = await axios.put(
-				`${import.meta.env.VITE_API_HOST}/ticket`,{
+				`${import.meta.env.VITE_API_HOST}/api/ticket`,{
           id: ticketFormData.id,
           name: ticketFormData.name,
           size: ticketFormData.size,
@@ -200,7 +200,7 @@ export default function ProductsComp() {
     }
 
     try {
-        await axios.delete(`${import.meta.env.VITE_API_HOST}/product/${productId}`); // Endpoint para deletar o produto
+        await axios.delete(`${import.meta.env.VITE_API_HOST}/api/product/${productId}`); // Endpoint para deletar o produto
         alert('Product deleted successfully');
 
         // Remove o produto da lista de produtos

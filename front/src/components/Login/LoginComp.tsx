@@ -18,7 +18,7 @@ export function LoginComp() {
     const encryptedLogin = encryptData(login);
     const encryptedPassword = encryptData(password);
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_HOST}/auth/login`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_HOST}/api/auth/login`, {
         username: encryptedLogin,
         password: encryptedPassword,
       });
