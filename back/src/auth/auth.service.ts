@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
 import { LoginUserDto } from './dto/login-user.dto';
+import { UserFromJwt } from './dto/user-from-jwt.dto';
 
 @Injectable()
 export class AuthService {
@@ -44,6 +45,11 @@ export class AuthService {
     } catch {
       throw new UnauthorizedException('Decryption failed');
     }
+  }
+
+  async validateToken(userFromJwt: UserFromJwt) {
+    const user = await this.usersService.findOneByEmail(userFromJwt.email);
+    return user ? true : false;
   }
 
   async gerarToken(payload: User) {
