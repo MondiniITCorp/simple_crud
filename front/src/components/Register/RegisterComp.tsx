@@ -22,6 +22,9 @@ export default function RegisterComp() {
           const response = await axios.post(`${import.meta.env.VITE_API_HOST}/users`, {
             name: encryptedLogin,
             password: encryptedPassword,
+          },
+          {
+            withCredentials: true, // Inclua credenciais, se necessário
           });
 
           navigate('/login');
