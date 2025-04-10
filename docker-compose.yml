@@ -35,26 +35,28 @@ services:
     volumes:
       - ./dataAssets:/app/data
 
-  # pgsql:
-  #   image: postgres:alpine
-  #   ports:
-  #     - '5432:5432'
-  #   container_name: 'pgsql'
-  #   networks:
-  #     - simple-crud-network
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: pguser
-  #     POSTGRES_PASSWORD: pgpassword
+  pgsql:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'pgsql'
+    networks:
+      - simple-crud-network
+    restart: always
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-  # adminer:
-  #   image: adminer
-  #   container_name: adminer
-  #   networks:
-  #     - simple-crud-network
-  #   restart: always
-  #   ports:
-  #     - 8000:8080
+  adminer:
+    image: adminer
+    container_name: adminer
+    networks:
+      - simple-crud-network
+    restart: always
+    ports:
+      - 8000:8080
 
 networks:
   simple-crud-network:
