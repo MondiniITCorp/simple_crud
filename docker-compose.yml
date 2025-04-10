@@ -16,8 +16,8 @@ services:
       - ./dataAssets:/app/dist/data
 
   back:
-    depends_on:
-      - pgsql
+    # depends_on:
+    #   - pgsql
     build: ./back
     image: back
     container_name: back
@@ -27,32 +27,33 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_HOST=pgsql
+      - DATABASE_HOST=localhost
+      - DATABASE_URL=postgres://pguser:pgpassword@host.docker.internal:5432/postgres
     env_file:
       - ./.prod.env
     volumes:
       - ./dataAssets:/app/data
 
-  pgsql:
-    image: postgres:alpine
-    ports:
-      - '5432:5432'
-    container_name: 'pgsql'
-    networks:
-      - simple-crud-network
-    restart: always
-    environment:
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pgpassword
+  # pgsql:
+  #   image: postgres:alpine
+  #   ports:
+  #     - '5432:5432'
+  #   container_name: 'pgsql'
+  #   networks:
+  #     - simple-crud-network
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: pguser
+  #     POSTGRES_PASSWORD: pgpassword
 
-  adminer:
-    image: adminer
-    container_name: adminer
-    networks:
-      - simple-crud-network
-    restart: always
-    ports:
-      - 8000:8080
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer
+  #   networks:
+  #     - simple-crud-network
+  #   restart: always
+  #   ports:
+  #     - 8000:8080
 
 networks:
   simple-crud-network:
