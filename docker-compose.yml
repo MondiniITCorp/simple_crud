@@ -61,3 +61,8 @@ services:
 networks:
   simple-crud-network:
     driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+    name: postgres_data
