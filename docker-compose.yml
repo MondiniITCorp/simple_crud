@@ -23,6 +23,7 @@ services:
     container_name: back
     networks:
       - simple-crud-network
+    network_mode: host
     restart: unless-stopped
     ports:
       - "3000:3000"
