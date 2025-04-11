@@ -10,7 +10,7 @@ export function LoginComp() {
   const [error, setError] = useState('');
 
   const encryptData = (data: string) => {
-    const secretKey = 'bWF5a29uZWh2aWFkbzEyMwo='; // Use a secure key
+    const secretKey = import.meta.env.VITE_HASHPASS; // Use a secure key
     return CryptoJS.AES.encrypt(data, secretKey).toString();
   };
 

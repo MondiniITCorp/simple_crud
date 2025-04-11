@@ -18,16 +18,14 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  const config = new DocumentBuilder()
-    .setTitle('Simple Crud Api')
-    .setDescription('Swagger of Simple Crud')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  // const config = new DocumentBuilder()
+  //   .setTitle('Simple Crud Api')
+  //   .setDescription('Swagger of Simple Crud')
+  //   .setVersion('1.0')
+  //   .addBearerAuth()
+  //   .build();
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('api', app, document);
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
-
-

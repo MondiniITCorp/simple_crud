@@ -6,17 +6,20 @@ import {
   Param,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { TicketService } from './ticket.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/guard/jwtauth.guard';
 
 @Controller('ticket')
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @ApiBody({
     description: 'Create ticket',
     type: CreateTicketDto,
@@ -26,6 +29,7 @@ export class TicketController {
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   @ApiBody({
     description: 'Get ticket by id',
     type: Number,
@@ -35,6 +39,7 @@ export class TicketController {
   }
 
   @Put()
+  @UseGuards(JwtAuthGuard)
   @ApiBody({
     description: 'Update ticket',
     type: UpdateTicketDto,
@@ -44,6 +49,7 @@ export class TicketController {
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   @ApiBody({
     description: 'Delete ticket by id',
     type: Number,

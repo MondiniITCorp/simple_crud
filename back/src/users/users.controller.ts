@@ -11,15 +11,15 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.createUser(createUserDto);
-  }
+  // @Post()
+  // create(@Body() createUserDto: CreateUserDto) {
+  //   return this.usersService.createUser(createUserDto);
+  // }
 
-  @Post('swagger')
-  createSwagger(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.createUserSw(createUserDto);
-  }
+  // @Post('swagger')
+  // createSwagger(@Body() createUserDto: CreateUserDto) {
+  //   return this.usersService.createUserSw(createUserDto);
+  // }
 
   // @Patch()
   // @UseGuards(JwtAuthGuard)
